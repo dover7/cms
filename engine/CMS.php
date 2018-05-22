@@ -1,6 +1,9 @@
 <?php
 
 namespace Engine;
+
+use Engine\Helper\Common;
+
 class CMS {
     /**
      * @var
@@ -25,6 +28,11 @@ class CMS {
     {
      //   echo 'Hello:)<BR>';
         $this->router->add('home','/','HomeController:index');
-        print_r($this->di);
+        $this->router->add('user','/user/','UserController:index');
+       // print_r($this->di);
+       $routerDispatch = $this->router->dispatch(common::getMethod(),common::getPathUrl());
+        print_r($routerDispatch);
+     // echo common::getMethod();
+     //  echo common::getPathUrl();
     }
 }

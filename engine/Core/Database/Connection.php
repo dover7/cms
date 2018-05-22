@@ -58,7 +58,7 @@ class Connection
 
 }
 
-$db = new connection();
+//$db = new connection();
 
 //$db->execute("INSERT INTO `user` SET `username`='Diman',`password`='123456',`date`=".time());
-print_r($db->query("SELECT * FROM `user`"));
+//print_r($db->query("SELECT * FROM `user`"));
