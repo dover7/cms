@@ -17,6 +17,6 @@ class CmsController extends Controller
 
     public function header()
     {
-        
+
     }
 }
