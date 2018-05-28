@@ -28,12 +28,8 @@ class CMS {
     public function run()
     {
     try {
-        $this->router->add('home', '/', 'HomeController:index');
-        $this->router->add('news', '/news/', 'HomeController:news');
-        $this->router->add('news_single', '/news/(id:int)', 'HomeController:news');
-        $this->router->add('user', '/user/', 'UserController:index');
-        // print_r($this->di);
 
+        require_once __DIR__.'/../cms/Route.php';
         $routerDispatch = $this->router->dispatch(common::getMethod(), common::getPathUrl());
         if ($routerDispatch == null) {
             $routerDispatch = new DispatchedRoute('ErrorController:page404');
