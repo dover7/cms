@@ -15,7 +15,9 @@ class Theme
      * @type string
      */
     public $url='';
-
+    /**
+     * @var array
+     */
     protected $data = [];
     /**
      * @param null $name
