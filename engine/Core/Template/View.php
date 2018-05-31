@@ -26,7 +26,7 @@ class View
      */
     public function render($template, $vars = [])
     {
-        $templatePath = ROOT_DIR . '/content/themes/default/' . $template . '.php';
+        $templatePath =  $this->GetTemplatePath($template, ENV);
         if (!is_file($templatePath))
         {
             throw new \InvalidArgumentException(
@@ -51,6 +51,24 @@ class View
 
     }
 
+    /**
+     * @param $template
+     * @param null $env
+     * @return string
+     */
+    private function GetTemplatePath($template, $env = null)
+    {
+        switch($env) {
+            case 'Admin':
+                return ROOT_DIR . '/View/' . $template . '.php';
+                break;
+            case 'Cms':
+                return ROOT_DIR . '/content/themes/default/' . $template . '.php';
+                break;
 
+            default:
+                return ROOT_DIR . '/' . mb_strtolower($env) . '/View/' . $template . '.php';
+        }
+    }
 
 }
