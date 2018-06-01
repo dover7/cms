@@ -2,20 +2,20 @@
 
 namespace Engine\Core\Auth;
 
-use Engine\Core\Cookie;
+use Engine\Helper\Cookie;
 
 class Auth implements AuthInterface
 {
     /**
      * @var bool
      */
-    public $authorized = false;
+    protected $authorized = false;
     protected $user;
 
     /**
      * @return bool
      */
-    public function autorized()
+    public function authorized()
     {
         return $this->authorized;
     }
@@ -32,10 +32,10 @@ class Auth implements AuthInterface
      * User authorization
      * @return void
      */
-    public function autorize($user)
+    public function authorize($user)
     {
-        Cookie::set('auth.authorized',true);
-        Cookie::set('auth.user',$user);
+        Cookie::set('auth_authorized',true);
+        Cookie::set('auth_user',$user);
         $this->authorized = true;
         $this->user = $user;
     }
@@ -44,10 +44,10 @@ class Auth implements AuthInterface
      * User unauthorization
      * @return void
      */
-    public function unAutorize($user)
+    public function unAuthorize($user)
     {
-        Cookie::delete('auth.authorized');
-        Cookie::delete('auth.user');
+        Cookie::delete('auth_authorized');
+        Cookie::delete('auth_user');
         $this->authorized = false;
         $this->user = null;
     }
