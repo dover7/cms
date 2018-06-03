@@ -10,7 +10,7 @@ class Auth implements AuthInterface
      * @var bool
      */
     protected $authorized = false;
-    protected $user;
+    protected $hash_user;
 
     /**
      * @return bool
@@ -23,9 +23,9 @@ class Auth implements AuthInterface
     /**
      * @return mixed
      */
-    public function user()
+    public function hashUser()
     {
-        return $this->user;
+        return Cookie::get('auth_user');
     }
 
     /**
@@ -37,7 +37,7 @@ class Auth implements AuthInterface
         Cookie::set('auth_authorized',true);
         Cookie::set('auth_user',$user);
         $this->authorized = true;
-        $this->user = $user;
+        $this->hash_user = $user;
     }
 
     /**
@@ -50,6 +50,8 @@ class Auth implements AuthInterface
         Cookie::delete('auth_user');
         $this->authorized = false;
         $this->user = null;
+        header('Location: /admin/login/', true, 301);
+        exit;
     }
 
     /**
