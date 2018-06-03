@@ -36,22 +36,16 @@ class Auth implements AuthInterface
     {
         Cookie::set('auth_authorized',true);
         Cookie::set('auth_user',$user);
-        $this->authorized = true;
-        $this->hash_user = $user;
     }
 
     /**
      * User unauthorization
      * @return void
      */
-    public function unAuthorize($user)
+    public function unAuthorize()
     {
         Cookie::delete('auth_authorized');
         Cookie::delete('auth_user');
-        $this->authorized = false;
-        $this->user = null;
-        header('Location: /admin/login/', true, 301);
-        exit;
     }
 
     /**

@@ -28,10 +28,6 @@ class LoginController extends Controller
 
         if ($this->auth->hashUser() !== null)
         {
-            $this->auth->authorize($this->auth->hashUser());
-        }
-        if ($this->auth->authorized())
-        {
             header('Location: /admin/', thue, 301);
             exit;
         }
@@ -44,7 +40,7 @@ class LoginController extends Controller
 
     public function authAdmin()
     {
-        $params = $this->request->post;          //admin@adm.com
+        $params = $this->request->post;
         $query = $this->db->query('
         SELECT *
         FROM `user`
@@ -64,6 +60,8 @@ class LoginController extends Controller
                 ');
 
                 $this->auth->authorize($hash);
+                header('Location: /admin/login/');
+                exit;
             }
         }
         print_r($query);exit;
