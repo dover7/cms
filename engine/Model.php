@@ -8,10 +8,10 @@
 
 namespace Engine;
 
-
+use Engine\Core\Database\QueryBuilder;
 use Engine\DI\DI;
 
-abstract class Controller
+abstract class Model
 {
     /**
      * @var DI
@@ -25,18 +25,16 @@ abstract class Controller
 
     protected $request;
 
-    protected $load;
-
     /**
-     * Controller constructor.
+     * Model constructor.
      * @param DI $di
      */
     public function __construct(DI $di)
     {
         $this->di = $di;
         $this->db = $this->di->get('db');
-        $this->view = $this->di->get('view');
-        $this->request = $this->di->get('request');
-        $this->load = $this->di->get('load');
+        $this->config = $this->di->get('config');
+
+        $this->queryBuilder = new QueryBuilder();
     }
 }

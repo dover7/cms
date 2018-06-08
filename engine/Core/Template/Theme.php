@@ -85,6 +85,9 @@ class Theme
      */
     private function loadTemplateFile($nameFile, $data = [])
     {
+        if (ENV == 'Admin'){
+            $templateFile = ROOT_DIR . '/view/' . $nameFile . '.php';
+        } else
         $templateFile = ROOT_DIR . '/content/themes/default/' . $nameFile . '.php';
         if (is_file($templateFile))
         {
