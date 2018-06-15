@@ -4,7 +4,7 @@ namespace Admin\Model\Page;
 
 use Engine\Core\Database\ActiveRecord;
 
-class User
+class Page
 {
     use ActiveRecord;
 

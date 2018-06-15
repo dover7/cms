@@ -12,6 +12,11 @@ class AdminController extends Controller           //admin@adm.com
      * @var Auth
      */
     protected $auth;
+
+    /**
+     * @var array
+     */
+    public $data = [];
     /**
      * AdminController constructor.
      * @param \Engine\DI\DI $di

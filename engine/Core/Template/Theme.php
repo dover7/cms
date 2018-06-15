@@ -91,7 +91,7 @@ class Theme
         $templateFile = ROOT_DIR . '/content/themes/default/' . $nameFile . '.php';
         if (is_file($templateFile))
         {
-            extract($data);
+            extract(array_merge($data,$this->data));
             require_once $templateFile;
         }
         else

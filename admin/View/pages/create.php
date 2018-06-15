@@ -15,13 +15,13 @@
                 </div>
                 <div class="form-group">
                     <label for="formContent">Content</label>
-                    <textarea class="form-control" id="formContent"></textarea>
+                    <textarea name="content" id="redactor" class="form-control" id="formContent"></textarea>
                 </div>
             </form>
             </div>
               <div class="col-3">
                   <p> Publish this page </p>
-                <button type="submit" class="btn btn-primary">Опубликовать</button>
+                <button type="submit" class="btn btn-primary" onclick="page.add();">Опубликовать</button>
             </div>
         </div>
         </div>

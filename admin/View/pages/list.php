@@ -9,17 +9,20 @@
                 <tr>
                     <th>#</th>
                     <th>Title</th>
+                    <th>Content</th>
                     <th>Date</th>
-                    <th>Username</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($pages as $page): ?>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td><a href="/admin/pages/edit/<?=$page['id']?>">
+                        <?=$page['title']?></a></td>
+                    <td><?=$page['content']?></td>
+                    <td><?=$page['date']?></td>
                 </tr>
+    <?php endforeach; ?>
                 </tbody>
             </table>
 
