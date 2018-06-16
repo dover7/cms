@@ -19,7 +19,8 @@ class DI {
      * @param $value
      * @return $this
      */
-    public function set($key, $value) {
+    public function set($key, $value)
+    {
         $this->container[$key]=$value;
         return $this;
     }
@@ -28,7 +29,8 @@ class DI {
      * @param $key
      * @return mixed
      */
-    public function get($key){
+    public function get($key)
+    {
         return $this->container[$key];
     }
 
@@ -36,8 +38,19 @@ class DI {
      * @param $key
      * @return bool
      */
-    public function has($key){
+    public function has($key)
+    {
         return isset($this->container[$key]) ? $this->container[$key] : null;
+    }
+
+    public function push($key, $element = [])
+    {
+        if ($this->has($key) !== null) {
+            $this->set($key, []);
+        }
+        if (!empty($element)) {
+            $this->container[$key][$element['key']] = $element['value'];
+        }
     }
 
 }

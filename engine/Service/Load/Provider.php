@@ -22,7 +22,7 @@ class Provider extends AbstractProvider
      */
     public function init()
     {
-        $load = new load();
+        $load = new load($this->di);
         $this->di->set($this->ServiceName, $load);
     }
 }

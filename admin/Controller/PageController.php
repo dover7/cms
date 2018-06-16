@@ -13,43 +13,42 @@ class PageController extends AdminController
 {
     public function listing()
     {
-        $pageModel = $this->load->model('page');
-        $data['pages']=$pageModel->repository->getPages();
+        $this->load->model('page');
+        $data['pages']=$this->model->page->getPages();
         $this->view->render('pages/list', $data);
     }
 
     public function create()
     {
-        $pageModel = $this->load->model('page');
+        $this->load->model('page');
 
         $this->view->render('pages/create');
     }
 
     public function edit($id)
     {
-        $pageModel = $this->load->model('page');
-
-        $this->data['page']= $pageModel->repository->getPageData($id);
+        $this->load->model('page');
+        $this->data['page']= $this->model->page->getPageData($id);
 
         $this->view->render('pages/edit',$this->data);
     }
 
     public function add()
     {
+        $this->load->model('page');
         $params = $this->request->post;
-        $pageModel = $this->load->model('page');
 
-        echo $pageId = $pageModel->repository->createPage($params);
+        echo $pageId = $this->model->page->createPage($params);
 
         //print_r($params);
     }
 
     public function update()
     {
+        $this->load->model('page');
         $params = $this->request->post;
-        $pageModel = $this->load->model('page');
 
-        echo $pageId = $pageModel->repository->updatePage($params);
+        echo $pageId = $this->model->page->updatePage($params);
 
         //print_r($params);
     }
